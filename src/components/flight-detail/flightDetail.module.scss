@@ -1,0 +1,15 @@
+.flightDetailSection {
+    font-size: 1.2rem;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s linear;
+    min-height: 0;
+    visibility: hidden;
+    line-height: 1.5rem;
+
+    &.open {
+        max-height: 400px;
+        transition: max-height 0.3s linear;
+        visibility: visible;
+    }
+}
