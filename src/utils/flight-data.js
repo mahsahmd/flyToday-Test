@@ -1,4 +1,4 @@
-{
+export const flightData = {
     "searchId": 84303,
     "pricedItineraries": [
         {
@@ -258,3 +258,4 @@
         "cities": null
     }
 }
+

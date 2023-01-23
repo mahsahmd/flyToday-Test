@@ -1,0 +1,171 @@
+.flightWrapper {
+    background-color: #ffffff;
+    display: grid;
+    // height: 185px;
+    grid-template-rows: 4fr 1fr;
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas: 'mainFlightInfoSection flightPriceSection' 'secondaryFlightInfoSection moreInfo';
+
+    .mainFlightInfoSection {
+        display: grid;
+        grid-template-columns: 1fr 4fr;
+        width: 100%;
+        border-bottom: 1px solid #eeeeee;
+        padding: 0 16px;
+        grid-area: mainFlightInfoSection;
+
+        .logo {
+            width: 50px;
+            height: 50px;
+        }
+
+        .flightInfo {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            align-items: center;
+
+            .timeLocation {
+                display: flex;
+                flex-direction: column;
+
+                p {
+                    color: #464646;
+                    font-size: 14px;
+
+                    &:first-child {
+                        font-size: 24px;
+                        font-weight: bold;
+                    }
+
+                    span {
+                        color: #8d8d8d;
+                        font-size: 12px;
+                    }
+                }
+            }
+
+            .durationWrapper {
+                min-width: 180px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                .duration {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+
+                    .line {
+                        width: 100%;
+                        height: 1px;
+                        border: 1px solid #c6c6c6;
+                    }
+
+                    .circle {
+                        width: 12px;
+                        height: 12px;
+                        border-radius: 50%;
+
+                        &.blue {
+                            border: 1px solid #1773dc;
+                        }
+
+                        &.orange {
+                            border: 1px solid #ff7913;
+                        }
+                    }
+                }
+            }
+        }
+
+
+    }
+
+    .flightPriceSection {
+        display: flex;
+        flex-direction: column;
+        border-right: 1px solid #eeeeee;
+        border-bottom: 1px solid #eeeeee;
+        justify-content: center;
+        align-items: center;
+        grid-area: flightPriceSection;
+        padding: 16px 0;
+        gap: 1rem;
+
+        p {
+            color: #8d8d8d;
+            font-size: 12px;
+
+        }
+
+        .price {
+            color: #1773dc;
+            font-size: 20px;
+            font-weight: bold;
+
+            span {
+                color: #8d8d8d;
+                font-size: 12px;
+                font-weight: normal;
+            }
+        }
+
+        button {
+            background-color: #1773dc;
+            border-radius: 4px;
+            border: none;
+            color: #ffffff;
+            height: 40px;
+            min-width: 169px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+    }
+
+    .secondaryFlightInfoSection {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        height: 100%;
+        grid-area: secondaryFlightInfoSection;
+        padding: 0 8px;
+
+        span {
+            color: #464646;
+            font-size: 14px;
+        }
+
+        .active {
+            background-color: #f4f4f4;
+            min-height: 25px;
+            min-width: 52px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    .moreInfo {
+        grid-area: moreInfo;
+        margin-block-end: 0;
+        margin-block-start: 0;
+        color: #ff7913;
+        justify-self: center;
+        margin: 8px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+
+}
+
+.flex {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}
