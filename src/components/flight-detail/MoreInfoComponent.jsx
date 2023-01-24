@@ -8,7 +8,7 @@ import useMobileWidth from '@/utils/isMobileWidth';
 import { IoCloseOutline } from 'react-icons/io5'
 import AmountSubmitComponent from '../amount-submit/AmountSubmitComponent';
 
-const MoreInfoComponent = ({ showDetail, setShowDetail }) => {
+const MoreInfoComponent = ({ showDetail, setShowDetail, data }) => {
     const [selectedTab, setSelectedTab] = useState('flightDetail');
     const isMobileWidth = useMobileWidth()
     return (
@@ -24,9 +24,9 @@ const MoreInfoComponent = ({ showDetail, setShowDetail }) => {
             </div>
             {
                 selectedTab === 'flightDetail' ?
-                    <FlightDetail /> : <Terms />
+                    <FlightDetail data={data} /> : <Terms />
             }
-            {(selectedTab === 'flightDetail' && isMobileWidth) && <AmountSubmitComponent className={(selectedTab === 'flightDetail' && isMobileWidth) ? 'modalView' : ''} setShowDetail={setShowDetail} />}
+            {(selectedTab === 'flightDetail' && isMobileWidth) && <AmountSubmitComponent price={data?.priceInfo?.itinTotalFare?.totalFare} className={(selectedTab === 'flightDetail' && isMobileWidth) ? 'modalView' : ''} setShowDetail={setShowDetail} />}
         </div>
     )
 }

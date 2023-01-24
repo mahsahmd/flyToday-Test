@@ -26,7 +26,7 @@ const FlightItem = ({ data }) => {
                         </div>
 
                         <div className={styles.durationWrapper}>
-                            <p>{toHoursAndMinutes(data?.originDestinationOptions[0]?.flightSegments[0].journeyDurationPerMinute)}</p>
+                            <p>{toHoursAndMinutes(data?.flightInfo?.journeyDurationPerMinute)}</p>
                             <div className={styles.duration}>
                                 <div className={`${styles.circle} ${styles.blue}`}></div>
                                 <div className={styles.line}></div>
@@ -43,14 +43,14 @@ const FlightItem = ({ data }) => {
                         </div>
                     </div>
                 </div>
-                <AmountSubmitComponent setShowDetail={setShowDetail} />
+                <AmountSubmitComponent price={data?.priceInfo?.itinTotalFare?.totalFare} setShowDetail={setShowDetail} />
                 <div className={styles.secondaryFlightInfoSection}>
                     <span className={styles.active}>چارتر</span>
                     <span>اکونومی</span>
                     <span>.</span>
-                    <span>7 صندلی خالی</span>
+                    <span>{data?.flightInfo?.seatsRemaining} صندلی خالی</span>
                     <span>.</span>
-                    <span>شماره پرواز: 4444</span>
+                    <span>شماره پرواز: {data?.flightInfo?.flightNumber}</span>
                     <span>.</span>
                     <span>تامین کننده:پرایس لاین</span>
                 </div>
@@ -58,7 +58,7 @@ const FlightItem = ({ data }) => {
 
 
             </div>
-            <MoreInfoComponent showDetail={showDetail} setShowDetail={setShowDetail} />
+            <MoreInfoComponent data={data} showDetail={showDetail} setShowDetail={setShowDetail} />
 
 
         </div>
