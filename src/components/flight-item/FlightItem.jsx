@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import styles from "@/components/flight-item/flightItem.module.scss";
-import { MdOutlineArrowDropDown } from "react-icons/md";
+import { MdOutlineArrowDropDown, MdOutlineArrowDropUp } from "react-icons/md";
 import { enToFaDigitsWithComma } from '@/utils/enToFaDigits';
 import { toHoursAndMinutes } from "@/utils/minuteToHours"
-import FlightDetail from '../flight-detail/FlightDetail';
+import MoreInfoComponent from '../flight-detail/MoreInfoComponent';
+import useMobileWidth from '@/utils/isMobileWidth';
 const FlightItem = ({ data }) => {
     const [showDetail, setShowDetail] = useState(false);
+    const isMobileWidth = useMobileWidth();
     return (
-        <>
+        <div className={styles.flightItemSection}>
+
             <div className={styles.flightWrapper}>
                 <div className={styles.mainFlightInfoSection}>
                     <div className={styles.flex}>
@@ -43,9 +46,9 @@ const FlightItem = ({ data }) => {
                     </div>
                 </div>
                 <div className={styles.flightPriceSection}>
-                    <p >یک نفر</p>
+                    <p className={styles.person}>یک نفر</p>
                     <p className={styles.price}>{enToFaDigitsWithComma(1370000)} <span>تومان</span> </p>
-                    <button>انتخاب بلیط</button>
+                    <button>{isMobileWidth ? "جزئیات و انتخاب " : "انتخاب بلیط"}</button>
                 </div>
                 <div className={styles.secondaryFlightInfoSection}>
                     <span className={styles.active}>چارتر</span>
@@ -57,14 +60,14 @@ const FlightItem = ({ data }) => {
                     <span>.</span>
                     <span>تامین کننده:پرایس لاین</span>
                 </div>
-                <p onClick={() => setShowDetail(state => !state)} className={styles.moreInfo}>جزییات بیشتر <MdOutlineArrowDropDown /></p>
-
+                <p onClick={() => setShowDetail(state => !state)} className={styles.moreInfo}>جزییات بیشتر {showDetail ? <MdOutlineArrowDropUp /> : <MdOutlineArrowDropDown />}</p>
 
 
             </div>
-            <FlightDetail showDetail={showDetail} />
-        </>
+            <MoreInfoComponent showDetail={showDetail} />
 
+
+        </div>
     )
 }
 

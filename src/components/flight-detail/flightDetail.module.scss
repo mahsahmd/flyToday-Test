@@ -1,15 +1,178 @@
 .flightDetailSection {
-    font-size: 1.2rem;
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height 0.3s linear;
-    min-height: 0;
-    visibility: hidden;
-    line-height: 1.5rem;
+    padding: 0 16px;
 
-    &.open {
-        max-height: 400px;
-        transition: max-height 0.3s linear;
-        visibility: visible;
+    .flightDesc {
+        color: #464646;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .flighInfo {
+        display: flex;
+        gap: 2rem;
+        margin-top: 32px;
+
+        .airlineInfo {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .logo {
+                width: 50px;
+                height: 50px;
+            }
+
+            p {
+                color: #6f6f6f;
+                font-size: 12px;
+            }
+        }
+
+        .flighTimeLocation {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+
+            p {
+                color: #464646;
+                font-size: 14px;
+
+                &.grayText {
+                    color: #8d8d8d;
+                }
+
+                span {
+                    &.bold {
+                        font-weight: bold;
+                    }
+                }
+            }
+
+            .circle {
+                width: 8px;
+                height: 8px;
+                border: 1px solid #870b1d;
+                border-radius: 50%;
+            }
+
+            .seperator {
+                width: 1px;
+                height: 18px;
+                border-left: 1.5px solid #eeeeee;
+            }
+        }
+
+        .extraInfoSection {
+            display: flex;
+            gap: 1rem;
+
+            .dottedLine {
+                width: 6px;
+                height: 100%;
+                min-height: 180px;
+                border-left: thick dotted #c6c6c6;
+            }
+
+            .flightDetail {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: repeat(3, auto);
+                gap: 0 1rem;
+                margin: 16px 0;
+                grid-template-areas:
+                    'duration flight-type refund'
+                    'airplane-type allowed-cargo .'
+                    'flight-class rate-class .';
+
+                .wrapper {
+                    display: flex;
+                    gap: 1rem;
+                    font-size: 12px;
+
+                    &.duration {
+                        grid-area: duration;
+                    }
+
+                    &.flightType {
+                        grid-area: flight-type;
+                    }
+
+                    &.refund {
+                        grid-area: refund;
+                    }
+
+                    &.airplaneType {
+                        grid-area: airplane-type;
+                    }
+
+
+
+                    &.cargo {
+                        grid-area: allowed-cargo;
+                    }
+
+                    &.flightClass {
+                        grid-area: flight-class;
+                    }
+
+                    &.rateClass {
+                        grid-area: rate-class;
+                    }
+
+                    p {
+                        color: #464646;
+
+                        &.title {
+                            color: #8d8d8d;
+                        }
+                    }
+
+                }
+            }
+        }
+
+
+    }
+
+    .amountSection {
+        display: flex;
+        font-size: 14px;
+        color: #464646;
+        align-items: center;
+        margin: 8px;
+
+        div {
+            border: 1px solid #eeeeee;
+            padding: 13px 32px;
+
+            &:not(:first-child) {
+                border-right: none;
+            }
+        }
+
+        .priceDetail {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .amoutWrapper {
+            display: flex;
+            gap: 1rem;
+
+            .title {
+                font-weight: bold;
+
+            }
+
+            .amount {
+                color: #1773dc;
+                font-weight: bold;
+
+                span {
+                    font-weight: normal;
+                }
+            }
+        }
     }
 }

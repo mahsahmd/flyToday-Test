@@ -5,7 +5,7 @@ const FlightList = (data) => {
     return (
         <div className={styles.component}>
             <div className={styles.flightListPage}>
-                <p>hi</p>
+                <div className={styles.filterComponent}>hi</div>
                 <section className={styles.flightItems}>
                     {data?.data?.map((item, index) => {
                         return <FlightItem data={item} key={index} />
