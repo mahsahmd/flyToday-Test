@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import styles from "@/components/flight-item/flightItem.module.scss";
 import { MdOutlineArrowDropDown, MdOutlineArrowDropUp } from "react-icons/md";
-import { enToFaDigitsWithComma } from '@/utils/enToFaDigits';
 import { toHoursAndMinutes } from "@/utils/minuteToHours"
-import MoreInfoComponent from '../flight-detail/MoreInfoComponent';
-import useMobileWidth from '@/utils/isMobileWidth';
+import MoreInfoComponent from '@/components/flight-detail/MoreInfoComponent';
+import AmountSubmitComponent from '@/components/amount-submit/AmountSubmitComponent';
 const FlightItem = ({ data }) => {
     const [showDetail, setShowDetail] = useState(false);
-    const isMobileWidth = useMobileWidth();
     return (
         <div className={styles.flightItemSection}>
 
@@ -45,11 +43,7 @@ const FlightItem = ({ data }) => {
                         </div>
                     </div>
                 </div>
-                <div className={styles.flightPriceSection}>
-                    <p className={styles.person}>یک نفر</p>
-                    <p className={styles.price}>{enToFaDigitsWithComma(1370000)} <span>تومان</span> </p>
-                    <button>{isMobileWidth ? "جزئیات و انتخاب " : "انتخاب بلیط"}</button>
-                </div>
+                <AmountSubmitComponent setShowDetail={setShowDetail} />
                 <div className={styles.secondaryFlightInfoSection}>
                     <span className={styles.active}>چارتر</span>
                     <span>اکونومی</span>
@@ -64,7 +58,7 @@ const FlightItem = ({ data }) => {
 
 
             </div>
-            <MoreInfoComponent showDetail={showDetail} />
+            <MoreInfoComponent showDetail={showDetail} setShowDetail={setShowDetail} />
 
 
         </div>

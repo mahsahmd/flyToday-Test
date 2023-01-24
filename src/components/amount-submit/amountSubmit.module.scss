@@ -1,0 +1,74 @@
+.flightPriceSection {
+    display: grid;
+    border-right: 1px solid #eeeeee;
+    border-bottom: 1px solid #eeeeee;
+    justify-items: center;
+    align-items: center;
+    grid-area: flightPriceSection;
+    padding: 16px 0;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas: 'person' 'price' 'select-button';
+
+    &.modalView {
+        box-shadow: 0 -5px 8px 0 rgba(0, 0, 0, 0.08);
+        position: sticky;
+        bottom: 0;
+        background-color: #ffffff;
+    }
+
+    @media screen and (max-width:'480px') {
+        border: none;
+        padding: 8px;
+        gap: 0;
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: repeat(2, auto);
+        grid-template-areas: 'person .' 'price select-button';
+        justify-items: flex-start;
+
+    }
+
+    p {
+        color: #8d8d8d;
+        font-size: 12px;
+
+    }
+
+    .person {
+        grid-area: person;
+
+        @media screen and (max-width:'480px') {
+            align-self: end;
+        }
+    }
+
+    .price {
+        color: #1773dc;
+        font-size: 20px;
+        font-weight: bold;
+        grid-area: price;
+
+        span {
+            color: #8d8d8d;
+            font-size: 12px;
+            font-weight: normal;
+        }
+    }
+
+    button {
+        background-color: #1773dc;
+        border-radius: 4px;
+        border: none;
+        color: #ffffff;
+        height: 40px;
+        min-width: 169px;
+        font-size: 14px;
+        cursor: pointer;
+        grid-area: select-button;
+
+        @media screen and (max-width:'480px') {
+            min-width: 150px;
+        }
+    }
+}

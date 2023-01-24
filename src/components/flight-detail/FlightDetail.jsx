@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from "@/components/flight-detail/flightDetail.module.scss";
-
 const FlightDetail = () => {
+
     return (
         <div className={styles.flightDetailSection}>
             <p className={styles.flightDesc}>پرواز رفت تهران-استانبول</p>
@@ -10,9 +10,14 @@ const FlightDetail = () => {
                     <img alt="logo" className={styles.logo} src="/images/mahan.png" />
                     <p>ماهان</p>
                 </div>
-                <div>
+                <div className={styles.dottedSeparator}>
+                    <div className={styles.circle}></div>
+                    <div className={styles.dottedLine}></div>
+                    <div className={styles.circle}></div>
+
+                </div>
+                <div className={styles.flighTimeLocationWrapper}>
                     <div className={styles.flighTimeLocation}>
-                        <div className={styles.circle}></div>
                         <p style={{ display: 'flex', gap: '1rem' }}><span className={styles.bold}>12:45</span><span>تهران (THR)</span></p>
                         <div className={styles.seperator}></div>
                         <p><span>12 اردیبهشت 1399</span><span> (07 April)</span></p>
@@ -20,7 +25,6 @@ const FlightDetail = () => {
                         <p className={styles.grayText}>Imam Khomeini Intl</p>
                     </div>
                     <div className={styles.extraInfoSection}>
-                        <div className={styles.dottedLine}></div>
                         <div className={styles.flightDetail}>
                             <div className={`${styles.wrapper} ${styles.duration}`}>
                                 <p className={styles.title}>مدت پرواز</p>
@@ -53,7 +57,6 @@ const FlightDetail = () => {
                         </div>
                     </div>
                     <div className={styles.flighTimeLocation}>
-                        <div className={styles.circle}></div>
                         <p style={{ display: 'flex', gap: '1rem' }}><span className={styles.bold}>12:45</span><span>تهران (THR)</span></p>
                         <div className={styles.seperator}></div>
                         <p><span>12 اردیبهشت 1399</span><span> (07 April)</span></p>
@@ -80,6 +83,7 @@ const FlightDetail = () => {
                     <p className={styles.amount}>1,370,000 <span>تومان</span></p>
                 </div>
             </div>
+
         </div>
     )
 }
