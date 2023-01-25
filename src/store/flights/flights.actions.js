@@ -1,5 +1,5 @@
 import { flightData } from "@/utils/flight-data"
-import { GET_FLIGHTS } from "./flights.constants"
+import {  GET_FLIGHTS, SET_FILTERS } from "./flights.constants"
 
 export const getFlights = () => {
     return {
@@ -7,3 +7,11 @@ export const getFlights = () => {
         payload: flightData
     }
 }
+
+export const setFilters = (filters) => {
+    return {
+        type : SET_FILTERS,
+        filters
+    }
+}
+

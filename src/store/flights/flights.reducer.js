@@ -1,16 +1,14 @@
-import { GET_FLIGHTS } from "./flights.constants";
+import { GET_FLIGHTS, SET_FILTERS } from "./flights.constants";
 
 const initialState = {
     airlines: null,
     flights: null,
     cities: null,
-    airports: null
+    airports: null,
+    filters:[]
 
 };
 
-const mapAirlineIataToName = (iata) => {
-
-}
 const flightReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_FLIGHTS:
@@ -27,6 +25,10 @@ const flightReducer = (state = initialState, action) => {
                 airports: action.payload.additionalData.airports,
 
             }
+        case SET_FILTERS:{
+            return {...state,filters:action.filters }
+        }
+
         default:
             return state;
     }

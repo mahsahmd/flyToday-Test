@@ -10,7 +10,6 @@ import useMapAirportdata from '@/utils/mapAirportdata';
 const FlightItem = ({ data }) => {
     const [showDetail, setShowDetail] = useState(false);
     const { departureAirport, arrivalAirport } = useMapAirportdata(data)
-
     return (
         <div className={styles.flightItemSection}>
 

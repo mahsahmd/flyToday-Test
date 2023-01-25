@@ -76,12 +76,12 @@ const FlightDetail = ({ data }) => {
                 {
                     data?.priceInfo?.ptcFareBreakdown?.map((passenger, index) => {
                         return (
-                            <div key={index}>
+                            <React.Fragment key={index}>
                                 <div className={styles.priceDetail}>
                                     <p>{passenger.passengerTypeQuantity.quantity} × {passenger.passengerTypeQuantity.passengerType === 'Adt' ? 'بزرگسال' : 'کودک'}  </p>
                                     <p>{enToFaDigitsWithComma(passenger?.passengerFare?.totalFareWithMarkupAndVat)} تومان</p>
                                 </div>
-                            </div>
+                            </React.Fragment>
                         )
                     })
                 }

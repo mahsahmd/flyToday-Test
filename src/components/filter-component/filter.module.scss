@@ -1,0 +1,26 @@
+.filterSection {
+    width: 100%;
+    max-width: 282px;
+    height: 100%;
+    background-color: #fff;
+    @media screen and (max-width:'480px') {
+        display: none;
+    }
+    .filterHeader {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 16px;
+        font-size: 14px;
+        color: #464646;
+        font-weight: bold;
+
+        .removeFilters {
+            font-size: 13px;
+            color: #1773dc;
+            font-weight: normal;
+            cursor: pointer;
+        }
+    }
+}
+

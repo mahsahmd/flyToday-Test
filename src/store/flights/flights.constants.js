@@ -1,1 +1,4 @@
 export const GET_FLIGHTS = "GET_FLIGHTS";
+export const GET_FILTERED_FLIGHTS = "GET_FILTERED_FLIGHTS";
+export const SET_FILTERS = "SET_FILTERS";
+

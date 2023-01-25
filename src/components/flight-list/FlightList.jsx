@@ -4,9 +4,11 @@ import FlightItem from '../flight-item/FlightItem'
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { getFlights } from '@/store/flights/flights.actions';
+import Filter from '@/components/filter-component/Filter';
+import { getFilteredFlights } from '@/store/flights/flights.selector';
 
 const FlightList = () => {
-    const { flights } = useSelector(state => state.flights);
+    const filteredFlights = useSelector(state => getFilteredFlights(state.flights))
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getFlights())
@@ -14,9 +16,9 @@ const FlightList = () => {
     return (
         <div className={styles.component}>
             <div className={styles.flightListPage}>
-                <p>hi</p>
+                <Filter/>
                 <section className={styles.flightItems}>
-                    {flights?.map((item, index) => {
+                    {filteredFlights?.length > 0 && filteredFlights?.map((item, index) => {
                         return <FlightItem data={item} key={index} />
                     })}
 

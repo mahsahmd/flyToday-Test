@@ -192,14 +192,15 @@
 
         div {
             border: 1px solid #eeeeee;
-            padding: 13px 32px;
-
+            padding: 8px;
             &:not(:first-child) {
                 border-right: none;
             }
 
             @media screen and (max-width:'480px') {
                 border: none;
+            padding: 13px 32px;
+
             }
         }
 
