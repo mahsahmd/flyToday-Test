@@ -1,20 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styles from "@/components/flight-detail/flightDetail.module.scss";
 import { toHoursAndMinutes } from "@/utils/minuteToHours"
 import { enToFaDigitsWithComma } from '@/utils/enToFaDigits';
-import { useSelector } from 'react-redux';
-import { format } from "date-fns-jalali"
+import { convertToJalali, getHourFromDate,getDate } from '@/utils/convertDate';
+import useMapAirportdata from '@/utils/mapAirportdata';
+
 const FlightDetail = ({ data }) => {
-    console.log(data, "datta details");
-    const [departureAirport, setDepartureAirport] = useState({});
-    const [arrivalAirport, setArrivalAirport] = useState({});
-
-    const { airports } = useSelector(state => state.flights);
-
-    useEffect(() => {
-        setArrivalAirport(airports.find((airports) => airports.iata === data?.flightInfo?.arrivalAirportLocationCode))
-        setDepartureAirport(airports.find((airports) => airports.iata === data?.flightInfo?.departureAirportLocationCode))
-    }, [data]);
+ 
+    const {departureAirport,arrivalAirport} = useMapAirportdata(data)
 
     return (
         <div className={styles.flightDetailSection}>
@@ -32,9 +25,9 @@ const FlightDetail = ({ data }) => {
                 </div>
                 <div className={styles.flighTimeLocationWrapper}>
                     <div className={styles.flighTimeLocation}>
-                        <p style={{ display: 'flex', gap: '1rem' }}><span className={styles.bold}>12:45</span><span>تهران (THR)</span></p>
+                        <p style={{ display: 'flex', gap: '1rem' }}><span className={styles.bold}>{getHourFromDate(data?.flightInfo?.departureDateTime)}</span><span>{departureAirport?.cityFa} ({departureAirport?.iata})</span></p>
                         <div className={styles.seperator}></div>
-                        <p><span>12 اردیبهشت 1399</span><span> (07 April)</span></p>
+                        <p><span>{convertToJalali(data?.flightInfo?.departureDateTime)}</span><span>({getDate(data?.flightInfo?.departureDateTime)})</span></p>
                         <div className={styles.seperator}></div>
                         <p className={styles.grayText}>{departureAirport.name}</p>
                     </div>
@@ -71,9 +64,9 @@ const FlightDetail = ({ data }) => {
                         </div>
                     </div>
                     <div className={styles.flighTimeLocation}>
-                        <p style={{ display: 'flex', gap: '1rem' }}><span className={styles.bold}>12:45</span><span>تهران (THR)</span></p>
+                    <p style={{ display: 'flex', gap: '1rem' }}><span className={styles.bold}>{getHourFromDate(data?.flightInfo?.arrivalDateTime)}</span><span>{arrivalAirport?.cityFa} ({arrivalAirport?.iata})</span></p>
                         <div className={styles.seperator}></div>
-                        <p><span>12 اردیبهشت 1399</span><span> (07 April)</span></p>
+                        <p><span>{convertToJalali(data?.flightInfo?.arrivalDateTime)}</span><span>({getDate(data?.flightInfo?.arrivalDateTime)})</span></p>
                         <div className={styles.seperator}></div>
                         <p className={styles.grayText}>{arrivalAirport.name}</p>
                     </div>

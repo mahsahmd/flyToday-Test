@@ -4,8 +4,13 @@ import { MdOutlineArrowDropDown, MdOutlineArrowDropUp } from "react-icons/md";
 import { toHoursAndMinutes } from "@/utils/minuteToHours"
 import MoreInfoComponent from '@/components/flight-detail/MoreInfoComponent';
 import AmountSubmitComponent from '@/components/amount-submit/AmountSubmitComponent';
+import { getHourFromDate } from '@/utils/convertDate';
+import useMapAirportdata from '@/utils/mapAirportdata';
+
 const FlightItem = ({ data }) => {
     const [showDetail, setShowDetail] = useState(false);
+    const { departureAirport, arrivalAirport } = useMapAirportdata(data)
+
     return (
         <div className={styles.flightItemSection}>
 
@@ -17,10 +22,10 @@ const FlightItem = ({ data }) => {
                     </div>
                     <div className={styles.flightInfo}>
                         <div className={styles.timeLocation}>
-                            <p>12:45</p>
-                            <p>تهران
-                                <span>(IST)</span>
-
+                            <p>{getHourFromDate(data?.flightInfo?.departureDateTime)}</p>
+                            <p>
+                                {departureAirport?.cityFa}
+                                <span>({departureAirport?.iata})</span>
                             </p>
 
                         </div>
@@ -35,9 +40,10 @@ const FlightItem = ({ data }) => {
                             </div>
                         </div>
                         <div className={styles.timeLocation}>
-                            <p>12:45</p>
-                            <p>تهران
-                                <span>(IST)</span>
+                            <p>{getHourFromDate(data?.flightInfo?.arrivalDateTime)}</p>
+                            <p>
+                                {arrivalAirport?.cityFa}
+                                <span>({arrivalAirport?.iata})</span>
                             </p>
 
                         </div>
